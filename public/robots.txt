@@ -1,0 +1,9 @@
+# ==============================================================================
+# Developed & Maintained by Website Pakistan (https://websitepakistan.com)
+# National Institute for Genomics and Advanced Biotechnology (NIGAB)
+# ==============================================================================
+
+User-agent: *
+Allow: /
+
+Sitemap: https://nigab.parc.gov.pk/sitemap.xml

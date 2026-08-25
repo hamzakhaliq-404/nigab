@@ -1,0 +1,29 @@
+{
+  "name": "nigab-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "National Institute for Genomics and Advanced Biotechnology (NIGAB) - Designed & Developed by Website Pakistan",
+  "author": {
+    "name": "Website Pakistan",
+    "email": "info@websitepakistan.com",
+    "url": "https://websitepakistan.com"
+  },
+  "homepage": "https://websitepakistan.com",
+  "copyright": "Copyright © 2026 Website Pakistan. All rights reserved.",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "typescript": "latest"
+  }
+}

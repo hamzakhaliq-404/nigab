@@ -1,0 +1,14 @@
+/* TEAM */
+Agency: Website Pakistan
+Website: https://websitepakistan.com
+Contact: info@websitepakistan.com
+Location: Islamabad, Pakistan
+Role: Full-stack Development, UI/UX Architecture & Maintenance
+
+/* SITE */
+Client: National Institute for Genomics & Advanced Biotechnology (NIGAB) / PARC
+Site: https://nigab.parc.gov.pk
+Language: English / Urdu
+Doctype: HTML5
+Technologies: Next.js, React, TypeScript, Modern CSS
+Copyright: © 2026 Website Pakistan. All Rights Reserved.
