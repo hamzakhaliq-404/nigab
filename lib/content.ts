@@ -359,7 +359,7 @@ export const labs: Lab[] = [
     cluster: 'plant',
     clusterLabel: 'Plant Biotechnology',
     icon: 'dna',
-    image: '/img/lab-genome-editing.webp',
+    image: '/img/lab-genome-editing-v2.webp',
     activities: [
       'Genome editing using CRISPR-Cas9, dCas9 and Cpf1 approaches for plant productivity',
       'Analysis of NGS data from genome re-sequencing and RNA-seq for SNP development and gene discovery',
@@ -476,7 +476,7 @@ export const labs: Lab[] = [
     cluster: 'animal',
     clusterLabel: 'Animal Biotechnology',
     icon: 'shield',
-    image: '/img/lab-health-biotech.webp',
+    image: '/img/lab-health-biotech-v2.webp',
     activities: [
       'Veterinary sciences and animal biotechnology',
       'Molecular epidemiology and diagnostics of animal diseases',
