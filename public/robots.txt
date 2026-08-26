@@ -6,4 +6,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nigab.parc.gov.pk/sitemap.xml
+Sitemap: https://nigab.websitepakistan.com/sitemap.xml

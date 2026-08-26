@@ -49,7 +49,13 @@ const urdu = Noto_Nastaliq_Urdu({
 
 /* -------------------------------------------------------------------- */
 
-const SITE_URL = 'https://nigab.parc.gov.pk';
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'https://nigab.websitepakistan.com');
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -87,7 +93,8 @@ export const metadata: Metadata = {
     locale: 'en_PK',
     images: [
       {
-        url: '/img/og-image.png',
+        url: `${SITE_URL}/img/og-image.png`,
+        secureUrl: `${SITE_URL}/img/og-image.png`,
         width: 1200,
         height: 630,
         alt: 'NIGAB — National Institute for Genomics & Advanced Biotechnology | PARC Islamabad',
@@ -102,7 +109,7 @@ export const metadata: Metadata = {
       "Pakistan's apex national platform for agricultural genomics, CRISPR genome editing, GMO testing, and biotechnology research at NARC, Islamabad.",
     site: '@NIGABOFFICIAL',
     creator: '@NIGABOFFICIAL',
-    images: ['/img/og-image.png'],
+    images: [`${SITE_URL}/img/og-image.png`],
   },
   icons: {
     icon: [
