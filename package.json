@@ -10,9 +10,12 @@
   },
   "homepage": "https://websitepakistan.com",
   "copyright": "Copyright © 2026 Website Pakistan. All rights reserved.",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "next dev -p 3000",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start -p 3000"
   },
   "dependencies": {
