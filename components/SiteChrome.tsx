@@ -12,6 +12,7 @@
  */
 
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Icon, type IconName } from './Icons';
 import { institute, navItems, searchTargets, tickerItems } from '@/lib/content';
@@ -19,6 +20,7 @@ import { institute, navItems, searchTargets, tickerItems } from '@/lib/content';
 type FontScale = 'sm' | 'base' | 'lg';
 
 export default function SiteChrome({ children }: { children: ReactNode }) {
+  const pathname = usePathname() || '/';
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showTop, setShowTop] = useState(false);
@@ -221,7 +223,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
       {/* ============ MASTHEAD ============ */}
       <header className="masthead">
         <div className="container masthead__inner">
-          <a className="lockup" href="#home" aria-label={`${institute.shortName} — ${institute.nameFull}, home`}>
+          <a className="lockup" href="/" aria-label={`${institute.shortName} — ${institute.nameFull}, home`}>
             <Image className="lockup__emblem" src="/img/nigab-logo-512.png" alt="NIGAB emblem" width={66} height={72} priority />
             <span className="lockup__rule" aria-hidden="true" />
             <span className="lockup__text">
@@ -238,10 +240,10 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
                 <span>{institute.ministry}</span>
               </div>
             </div>
-            <a className="btn btn--outline btn--sm" href="#services">
+            <a className="btn btn--outline btn--sm" href="/services">
               Research Services <Icon name="arrow-right" size={15} className="arrow" />
             </a>
-            <a className="btn btn--sm" href="#contact">Contact Us</a>
+            <a className="btn btn--sm" href="/contact">Contact Us</a>
           </div>
         </div>
       </header>
@@ -249,7 +251,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
       {/* ============ PRIMARY NAV ============ */}
       <nav className="nav" aria-label="Primary">
         <div className="container nav__inner">
-          <a className="nav__brand" href="#home">
+          <a className="nav__brand" href="/">
             <Image src="/img/nigab-logo-192.png" alt="" width={30} height={33} aria-hidden="true" />
             <span>NIGAB</span>
           </a>
@@ -257,10 +259,11 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
           <ul className="nav__list">
             {navItems.map((item) => {
               if (item.href) {
+                const isActive = item.href === '/' ? pathname === '/' : pathname === item.href || (item.href.length > 1 && pathname.startsWith(item.href));
                 return (
                   <li className="nav__item" key={item.label}>
                     <a
-                      className={`nav__link${activeSection === item.href.slice(1) ? ' is-active' : ''}`}
+                      className={`nav__link${isActive ? ' is-active' : ''}`}
                       href={item.href}
                     >
                       {item.label}
@@ -354,7 +357,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
               {tickerItems.map((item, i) => (
                 <p className={`ticker__item${i === tick ? ' is-active' : ''}`} key={item.text}>
                   <time>{item.kicker}</time>
-                  <a href="#news">{item.text}</a>
+                  <a href="/news">{item.text}</a>
                 </p>
               ))}
             </div>
@@ -408,24 +411,24 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
             <div>
               <h4>Important Links</h4>
               <nav className="footer__links">
-                <a href={institute.parcUrl} target="_blank" rel="noopener noreferrer">PARC</a>
-                <a href="#home">NIGAB Home</a>
-                <a href="#publications">NIGAB Library</a>
-                <a href="#projects">Research Projects</a>
-                <a href="#patents">Patents</a>
-                <a href="#contact">Staff Directory</a>
+                <a href={institute.parcUrl} target="_blank" rel="noopener noreferrer">PARC Official</a>
+                <a href="/">NIGAB Home</a>
+                <a href="/about">About Institute</a>
+                <a href="/laboratories">28 Laboratories</a>
+                <a href="/publications">Research Publications</a>
+                <a href="/contact">Staff &amp; Directory</a>
               </nav>
             </div>
 
             <div>
-              <h4>Resources</h4>
+              <h4>Resources &amp; Services</h4>
               <nav className="footer__links">
-                <a href="#programmes">Plant Biotechnology</a>
-                <a href="#laboratories">Animal Biotechnology</a>
-                <a href="#services">Commercial Services</a>
-                <a href="#academics">Internship Programme</a>
-                <a href="#academics">Training Workshops</a>
-                <a href="#gallery">Photo Gallery</a>
+                <a href="/programmes">Research Programmes</a>
+                <a href="/services">Commercial Services &amp; Testing</a>
+                <a href="/services#facilities">Diagnostic Facilities</a>
+                <a href="/academics">Internship &amp; Fellowships</a>
+                <a href="/news">Newsroom &amp; Events</a>
+                <a href="/contact">Location &amp; Inquiries</a>
               </nav>
             </div>
 
@@ -458,10 +461,10 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
           <div className="footer__bottom">
             <span>© {new Date().getFullYear()} {institute.nameFull}, PARC. All rights reserved.</span>
             <nav>
-              <a href="#home">Sitemap</a>
-              <a href="#contact">Accessibility</a>
-              <a href="#contact">Privacy Policy</a>
-              <a href="#contact">Terms of Use</a>
+              <a href="/sitemap.xml">Sitemap</a>
+              <a href="/contact">Accessibility</a>
+              <a href="/contact">Privacy Policy</a>
+              <a href="/contact">Terms of Use</a>
             </nav>
             <a href="https://websitepakistan.com/" target="_blank" rel="noopener noreferrer">Powered by Website Pakistan</a>
           </div>
@@ -511,7 +514,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
           </div>
 
           <div className="drawer__foot">
-            <a className="btn btn--block" href="#contact" onClick={() => setDrawerOpen(false)}>Contact the Institute</a>
+            <a className="btn btn--block" href="/contact" onClick={() => setDrawerOpen(false)}>Contact the Institute</a>
             <a className="btn btn--outline btn--block" href={institute.parcUrl} target="_blank" rel="noopener noreferrer">
               Visit PARC <Icon name="external" size={14} />
             </a>
